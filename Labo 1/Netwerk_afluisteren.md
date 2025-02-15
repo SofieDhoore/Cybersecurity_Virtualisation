@@ -82,6 +82,32 @@ The next 3 messages are a TCP handshake between the client and the webserver gai
 
 In the 8th message of the capture, we can see that the server responds to the HTTP request with status code 200 OK. All content (the HTML of the page) is included in this message, so the client can display the web page in the browser.
 
+### lab1 Wireshark intro 3 HTTP with objects.pcap
+
+**How many HTTP GET request messages did your browser send? To which Internet addresses (URLs) were these GET requests sent?**
+
+4 GET requests
+
+**Have a look at packet 20. Which HTTP return code did you receive? What does this indicate?**
+
+Packet 20: HTTP 302 > URL redirection
+
+**Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel? Explain.**
+
+Images are sent in serial
+
+This is a more complex example of network traffic generated when a client (IP: 157.193.215.200) browses to a website (<http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html>). This time, not only the HTML page is downloaded, but also 2 images which are included in the HTML.
+
+The capture starts with the client sending a DNS lookup for gaia.cs.umass.edu, and the DNS server (157.193.215.2) answers with IP 128.119.245.12.
+
+The client then sends a HTTP GET request to gaia to retrieve the HTML page. In the HTML, two images are used, which need to be downloaded using separate GET requests.
+
+The first image is downloaded from the same server (gaia). The second image however is located on a different server (manic.cs.umass.edu). Before we can connect to this server, the client needs to send another DNS lookup, this time for server manic. After the DNS server answers (manic has IP 128.119.240.90) the client sends a HTTP GET request to download the second image.
+
+This server however responds that the image is located on a different server, and that the client should download the image from <http://caite.cs.umass.edu/>. This is done using a HTTP 302 response message.
+
+The client then contacts the DNS server again to get the IP address of caite. Unfortunately, caite has the same IP address as manic, being 128.119.240.90. Once the client knows the IP of caite, it sends a final GET request to download the second image from this server
+
 ## Summary
 
 ### Active vs passive FTP
