@@ -48,6 +48,8 @@ ICMP = Internet Control Message Protocol
 
 DNS = Domain Name System
 
+If we look at the echo (ping) request and reply messages, we can see that all packages have a TTL of 128. This can indicate that both machines run Windows. On Linux hosts, a TTL of 64 is typically used instead. So, if you would ping a linux machine from a windows host, you will see that the ping requests have a TTL of 128 and the ping replies will have a TTL of 64.
+
 ## Analysing a HTTP capture
 
 ### lab1 Wireshark intro 2 HTTP basic.pcap
@@ -56,18 +58,32 @@ Indicate where in the message you've found the information that answers the foll
 
 **Is the browser running HTTP version 1.0 or 1.1? What version of HTTP is the server running?**
 
-The browser is running version 1.1. The request version is also 1.1
+The browser (client) is running version 1.1. The request (server) version is also 1.1
 
 **What languages (if any) does your browser indicate that it can accept to the server?**
 
-Accept-language = en, nl
+Client accepts EN or NL as languages. Accept-language = en, nl
 
 **What is the IP address of your computer? Of the gaia.cs.umass.edu server?**
 
-host: 157.193.215.200
+Client (host): 157.193.215.200
 
 gaia.cs.umass.edu: 128.119.245.12
 
 **What is the status code returned from the server to your browser?**
 
 Status code: 200 OK
+
+This file illustrates the network traffic generated when a client (IP: 157.193.215.200) browses to a website (URL: <http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html>).
+
+First, the client needs to resolve the IP of the destination URL. The first 2 messages in the capture illustrate a DNS query sent to a DNS server (157.193.215.2) to get the A record for gaia.cs.umass.edu. The DNS server responds that the IP address is 128.119.245.12.
+
+The next 3 messages are a TCP handshake between the client and the webserver gaia. Next, a GET request is sent from the client to the webserver to get the contents of /wireshark-labs/HTTP-wireshark-file1.html. In this message, we can see that the client browser uses HTTP/1.1. Furthermore, if we expand the HTTP part of this message, we can see that the browser accepts NL or EN as languages.
+
+In the 8th message of the capture, we can see that the server responds to the HTTP request with status code 200 OK. All content (the HTML of the page) is included in this message, so the client can display the web page in the browser.
+
+## Summary
+
+### Active vs passive FTP
+
+In active mode the server initiates the connection to the client for the DATA Channel. In passive mode, the client initiates is. In active mode port 20 is used on the FTP server. In passive mode a random port is used.
