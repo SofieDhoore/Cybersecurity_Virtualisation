@@ -108,7 +108,25 @@ This server however responds that the image is located on a different server, an
 
 The client then contacts the DNS server again to get the IP address of caite. Unfortunately, caite has the same IP address as manic, being 128.119.240.90. Once the client knows the IP of caite, it sends a final GET request to download the second image from this server
 
-## Summary
+## A real world example
+
+**Take a look at the conversations. What do you notice?**
+
+There are a lot of different protocols, such as DNS, ICMP, TCP, ARP, HTTP, EPM, SSDP,... When you go to statistics and then to Conversations, there are different tabs: UDP, IPv4, IPv6, Ethernet and TCP
+
+**Take a look at the protocol hierarchy. What are some interesting protocols listed here?**
+
+Go to statistics and then to protocol hierarchy. TCP is one of the most common, also IPv4 and SSH. SSH is a part of the TCP.
+
+**Can you spot an SSH session that got established between 2 machines? List the 2 machines. Who was the SSH server and who the client? What ports were used?**
+
+SSH is located at port 22, you can find them by this command in the searchbox `tcp.port == 22`.
+
+Some cleartext data was transferred between two machines. Can you spot the data? Can you deduce what happened here?
+
+Tip: Using a display filter might be useful: <https://wiki.wireshark.org/DisplayFilters> can give you a hint on how to filter on a subset of the captured packets.
+
+## Extra information
 
 ### Active vs passive FTP
 
