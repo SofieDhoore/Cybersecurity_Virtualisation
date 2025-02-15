@@ -32,7 +32,7 @@ ACK → Client completes handshake.
 
 You will see multiple PORT commands, each with a different port. If you enter this into Wireshark `tcp.flags.syn == 1`, you will see three separate SYN handshakes with different ports, this means three data connections are set up.
 
-### Ter info
+### For your information
 
 FTP = File Transfer Protocol to transfer files between client and server.
 
@@ -52,7 +52,22 @@ DNS = Domain Name System
 
 ### lab1 Wireshark intro 2 HTTP basic.pcap
 
-Is the browser running HTTP version 1.0 or 1.1? What version of HTTP is the server running?
+Indicate where in the message you've found the information that answers the following questions.
+
+**Is the browser running HTTP version 1.0 or 1.1? What version of HTTP is the server running?**
+
+The browser is running version 1.1. The request version is also 1.1
+
 What languages (if any) does your browser indicate that it can accept to the server?
+
+Accept-language = en, nl
+
 What is the IP address of your computer? Of the gaia.cs.umass.edu server?
+
+host: 157.193.215.200
+
+gaia.cs.umass.edu: 128.119.245.12
+
 What is the status code returned from the server to your browser?
+
+Status code: 200 OK
