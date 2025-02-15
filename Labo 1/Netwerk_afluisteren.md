@@ -33,3 +33,21 @@ Je zult meerdere PORT-commando's zien, elk met een andere poort. Als je dit invo
 FTP = File Transfer Protocol om bestanden over te dragen tussen client en server.
 
 TCP = Transmission Control Protocol om data uit te wisselen tussen netwerken.
+
+## Exploring a first trace file
+
+**Think of how DNS is working, on what ICMP is all about. The protocol is on the Network Layer and it used for error handling. Try to analyse which command has lead to this stream of packets. Be as precise as you can be.**
+
+When you click on the lines, you can see type 8 and type 0, type 8 is a request, type 0 is a reply. It means it's a ping, it's using ping. There's an equal interval time between packets and one source and one destination IP.
+
+ICMP = Internet Control Message Protocol
+DNS = Domain Name System
+
+## Analysing a HTTP capture
+
+### lab1 Wireshark intro 2 HTTP basic.pcap
+
+Is the browser running HTTP version 1.0 or 1.1? What version of HTTP is the server running?
+What languages (if any) does your browser indicate that it can accept to the server?
+What is the IP address of your computer? Of the gaia.cs.umass.edu server?
+What is the status code returned from the server to your browser?
