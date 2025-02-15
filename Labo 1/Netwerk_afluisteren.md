@@ -58,16 +58,16 @@ Indicate where in the message you've found the information that answers the foll
 
 The browser is running version 1.1. The request version is also 1.1
 
-What languages (if any) does your browser indicate that it can accept to the server?
+**What languages (if any) does your browser indicate that it can accept to the server?**
 
 Accept-language = en, nl
 
-What is the IP address of your computer? Of the gaia.cs.umass.edu server?
+**What is the IP address of your computer? Of the gaia.cs.umass.edu server?**
 
 host: 157.193.215.200
 
 gaia.cs.umass.edu: 128.119.245.12
 
-What is the status code returned from the server to your browser?
+**What is the status code returned from the server to your browser?**
 
 Status code: 200 OK
