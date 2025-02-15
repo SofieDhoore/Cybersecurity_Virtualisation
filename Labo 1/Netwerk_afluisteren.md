@@ -1,42 +1,42 @@
-# Netwerk afluisteren
+# Network sniffing
 
-## Voorbeeld: 0-FTP.pcap
+## Example: 0-FTP.pcap
 
-Capture van FTP activiteit
+Capture van FTP activity
 
-**Hoeveel TCP-verbindingen?**
+**How many TCP-connections are there?**
 
-Statistics menu -> Conversations -> TCP Tab geeft aantal TCP verbindingen weer. In deze file: 45
+Statistics menu -> Conversations -> TCP Tab tells how many TCP connections there are. In this file: 45
 
-**Hoe start elke TCP-verbinding?**
+**How is each TCP-connection starting?**
 
-Elke TCP-verbinging start met een 3-way-handshake. Dit proces zorgt ervoor dat beide partijen klaar zijn voor communicatie en dat de verbinding betrouwbaar tot stand komt.
+Every TCP-connection starts with a 3-way-handshake. This process ensures that both parties are ready for communication and that the connection is established reliably.
 
-SYN (Synchronize): De initiërende host (client) stuurt een pakket met de SYN-vlag aan naar de server om een verbinding aan te vragen.
+SYN (Synchronize): The initiating host (client) sends a packet with the SYN flag to the server to request a connection.
 
-SYN-ACK (Synchronize-Acknowledge): De server antwoordt met een pakket waarin zowel de SYN- als de ACK-vlaggen aanstaan.
+SYN-ACK (Synchronize-Acknowledge): The server responds with a packet that has both the SYN and ACK flags enabled.
 
-ACK (Acknowledge): De client bevestigt de ontvangst met een ACK-pakket. De verbinding is nu tot stand gebracht.
+ACK (Acknowledge): The client acknowledges receipt with an ACK packet. The connection is now established.
 
-**Kan je de reden voor de drie dataverbindingen afleiden uit de controleverbinding?**
+**Can you deduce the reason for the three data connections from the control connection?**
 
-Als je drie aparte SYN, SYN-ACK, ACK-handshakes ziet op verschillende poorten, weet je dat drie dataverbindingen zijn gebruikt.
+If you see three separate SYN, SYN-ACK, ACK handshakes on different ports, you know that three data connections have been used.
 
-Request: PORT 157, 193, 214, 191, 19, 137. Dit betekent 157.193.214.191 als IP-adres. (19\*256) + 137 = 5001. 5001 is de poort. Als je dan `tcp.port == 5001` intikt, krijg je alle pakketten die via deze poort verstuurd worden.
+Request: PORT 157, 193, 214, 191, 19, 137. This means 157.193.214.191 as the IP-address. (19\*256) + 137 = 5001. 5001 is the port. If you put `tcp.port == 5001`, then you get all packets sent through this port.
 
-SYN → Client vraagt om een verbinding op poort 5001.
+SYN → Client requests a connection on port 5001.
 
-SYN-ACK → Server bevestigt.
+SYN-ACK → Server confirms.
 
-ACK → Client voltooit de handshake.
+ACK → Client completes handshake.
 
-Je zult meerdere PORT-commando's zien, elk met een andere poort. Als je dit invoert in Wireshark `tcp.flags.syn == 1`, je ziet drie aparte SYN-handshakes met verschillende poorten, dit betekent dat drie dataverbindingen zijn opgezet.
+You will see multiple PORT commands, each with a different port. If you enter this into Wireshark `tcp.flags.syn == 1`, you will see three separate SYN handshakes with different ports, this means three data connections are set up.
 
 ### Ter info
 
-FTP = File Transfer Protocol om bestanden over te dragen tussen client en server.
+FTP = File Transfer Protocol to transfer files between client and server.
 
-TCP = Transmission Control Protocol om data uit te wisselen tussen netwerken.
+TCP = Transmission Control Protocol to exchange data between networks.
 
 ## Exploring a first trace file
 
