@@ -120,9 +120,21 @@ Go to statistics and then to protocol hierarchy. TCP is one of the most common, 
 
 **Can you spot an SSH session that got established between 2 machines? List the 2 machines. Who was the SSH server and who the client? What ports were used?**
 
-SSH is located at port 22, you can find them by this command in the searchbox `tcp.port == 22`.
+SSH is located at port 22, you can find them by this command in the searchbox `tcp.port == 22`. Check SYN to know Client -> Server, in this case, client is 172.30.128.10 and the server is 172.30.42.2. Server-port is usually 22. The Client port is a random high port (more then 1024) assigned dynamically.
 
-Some cleartext data was transferred between two machines. Can you spot the data? Can you deduce what happened here?
+**Some cleartext data was transferred between two machines. Can you spot the data? Can you deduce what happened here?**
+
+Cleartext data is often found in unencrypted protocols such as HTTP. Go to Analyze, Follow and HTTP Stream. Someone interacted with a web-based command execution interface on <www.insecure.cyb>. In the POST request to /exec, we see: `{"cmd":"ip a"}`, this means the user executed the command `ip a`. This command is an injection vulnerability. If an attacker can send arbitrary commands to `/exec`, they could execute system commands, escalate privileges, extrafiltrate sensitive data,...
+
+What happened here? A user accessed the web interface at <www.insecure.cyb>, they used the command execution feature to run `ip a` and retrieve the server's network information. The server returned network detailsin cleartext JSON response. 
+
+**How to look for traces of actual attackers?**
+
+Look for exploits & attacks: `http.request.method == "POST" && http contains "cmd="`
+
+Look for unauthorized access: `ftp.request.command == "USER" || ssh` or `icmp || tcp.flags == 0x0002`
+
+Look for suspicious conncections: `tcp.port > 1024 && !(tcp.port == 443 || tcp.port == 80)`
 
 Tip: Using a display filter might be useful: <https://wiki.wireshark.org/DisplayFilters> can give you a hint on how to filter on a subset of the captured packets.
 
