@@ -37,7 +37,7 @@ Stop the capture and save the results as a `.pcap`-file.
 
 ## Questions related to your capture
 
-1; Are DHCP messages sent over UDP or TCP?
+*1; Are DHCP messages sent over UDP or TCP?*
 
 UDP = User Datagram Protocol (It is a communication protocol used across the internet for time-sensitive transmissions)
 
@@ -45,21 +45,25 @@ DHCP Discover = client requesting an IP address.
 
 DHCP Offer = server responding with an IP.
 
-2; What is de IP-address of your DHCP-server?
+Solution course: DHCP messages are sent over UDP. If you look at a single message of the capture, you will see that there is an UDP segment encapsulated inside an Ethernet frame.
+
+*2; What is de IP-address of your DHCP-server?*
 
 DHCP Offer = server responds with an IP address and the server's IP is shown as `Server Identifier`. The DHCP Server Identifier is `10.0.2.2`.
 
-3; Draw a timing diagram illustrating the sequence of the first four-packet Discover/Offer/Request/ACK DHCP exchange between the client and server. For each packet, indicated the source and destination port numbers.
+Solution course: The DHCP server had IP `10.0.2.2`. It is the source IP for both the DHCP Offer and DHCP ACK messages.
 
-DHCP Discover - from client to server, source port: 68, destination port: 67
+*3; Draw a timing diagram illustrating the sequence of the first four-packet Discover/Offer/Request/ACK DHCP exchange between the client and server. For each packet, indicated the source and destination port numbers.*
 
-DHCP Offer - from server to client, source port: 67, destination port: 68
+DHCP Discover - from client to server, source port: 68, destination port: 67, source: `0.0.0.0`, destination: `255.255.255.255`
 
-DHCP Request - from client to server, source port: 68, destination port: 67
+DHCP Offer - from server to client, source port: 67, destination port: 68, source: `10.0.0.0`, destination: `10.0.2.15` (your client IP-address)
 
-DHCP ACK - from server to client, source port: 67, destination port: 68
+DHCP Request - from client to server, source port: 68, destination port: 67, source: `0.0.0.0`, destination: `255.255.255.255`
 
-4; A host uses DHCP to obtain an IP address, among other things. But a host's IP address is not confirmed until the end of the four-message exchange! If the IP address is not set until the end of the four-message exchange, then what values are used in the IP datagrams in the four-message exchange? For each of the four DHCP messages (Discover/Offer/Request/ACK DHCP), indicate the source and destination IP addresses that are carried in the encapsulating IP datagram.
+DHCP ACK - from server to client, source port: 67, destination port: 68, source: `10.0.2.2`, destination: `10.0.2.15`
+
+*4; A host uses DHCP to obtain an IP address, among other things. But a host's IP address is not confirmed until the end of the four-message exchange! If the IP address is not set until the end of the four-message exchange, then what values are used in the IP datagrams in the four-message exchange? For each of the four DHCP messages (Discover/Offer/Request/ACK DHCP), indicate the source and destination IP addresses that are carried in the encapsulating IP datagram.*
 
 DHCP Discover - source IP: 0.0.0.0 (client does not have an IP yet), destination IP: 255.255.255.255 (broadcast)
 
@@ -73,8 +77,10 @@ The key insight is that the client uses the special address 0.0.0.0 as the sourc
 
 The DHCP server always uses its own IP address as the source for the messages it sends. Only after receiving the final DHCP ACK does the client configure its interface with the assigned IP address.
 
-5; Explain the purpose of the lease time. How long is the lease time in your experiment?
+*5; Explain the purpose of the lease time. How long is the lease time in your experiment?*
 
 Lease time is the amount of time in minutes or seconds a network device can use an IP Address in a network. The IP Address is reserved for that device until the reservation expires.
 
 In WireShark you can find the lease time in the DHCP ACK at Option (51) IP Address Lease Time. The length is for and the lease time is 1 day (86400).
+
+Solution course: The lease time can be found inside the DHCP Offer and DHCP ACK Message, as DHCP option 51. The lease time for the VirtualBox DHCP server is 1 day.
