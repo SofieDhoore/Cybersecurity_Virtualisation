@@ -16,4 +16,8 @@ I've downloaded a Debian VM on <https://www.debian.org/releases/bookworm/debian-
 ## Prepare the VM
 
 I've set up 2 adapters, a NAT and a Host-Only.
+
+## Router configuration
+
+Access to root with `sudo su -`, give the password from your user. After setting up a routing-script
   
