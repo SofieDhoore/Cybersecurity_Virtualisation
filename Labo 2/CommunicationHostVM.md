@@ -19,5 +19,11 @@ I've set up 2 adapters, a NAT and a Host-Only.
 
 ## Router configuration
 
-Access to root with `sudo su -`, give the password from your user. After setting up a routing-script
+Access to root with `sudo su -`, give the password from your user. After setting up a routing-script and running the script, I could make a connection with the Kali Linux & Windows 10 VM. There was first some trouble to connect but I needed to select the Virtual Box Host Only Adapter #2 for the two VM's.
+
+To make connection with internet & ping the router, you need to start the Debian CLI router in VirtualBox. After that start up the other VM's, now you can also ping both VM's to each other.
+
+### SSH connection
+
+First start up your Debian CLI and login as root. Go to Windows prompt and typ `ssh *username*@*ip-vm-router*`, enter password and now you've made connection the VM-router from your hostmachine. And you can now copy-paste easily from your host.
   
