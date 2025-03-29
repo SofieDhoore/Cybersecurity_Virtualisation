@@ -25,5 +25,5 @@ To make connection with internet & ping the router, you need to start the Debian
 
 ### SSH connection
 
-First start up your Debian CLI and login as root. Go to Windows prompt and typ `ssh *username*@*ip-vm-router*`, enter password and now you've made connection the VM-router from your hostmachine. And you can now copy-paste easily from your host.
+First start up your Debian CLI and login as root. Go to Windows prompt and typ `ssh [username]@[ip-vm-router]`, enter password and now you've made connection the VM-router from your hostmachine. And you can now copy-paste easily from your host.
   
