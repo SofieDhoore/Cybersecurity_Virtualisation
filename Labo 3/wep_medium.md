@@ -24,7 +24,7 @@ I've found the manufacturer with the site `https://macvendors.com` and entered t
 
 The output of the `ivs`-file shows 5 lines, which means aircrack-ng tries to crack a key of 13 bytes. A bit is 8 bytes, so 13 x 8 = 104. The IV (Initialization Vector) is always one of 24 bits (3 bytes x 8).
 
-So 104 + 24 = 128 bits.
+So, 104 + 24 = 128 bits.
 
 ## What is the WEP password (in hexadecimal format)?
 
