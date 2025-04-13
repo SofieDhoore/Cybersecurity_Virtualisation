@@ -2,7 +2,7 @@
 
 WPA = WiFi Protected Access
 
-You can open a `cap`-file with `aircrack-ng` in Kali Linux with the command: `aircrack-ng wep-easy-01.cap`.
+You can open a `cap`-file with `aircrack-ng` in Kali Linux with the command: `aircrack-ng wpa-easy-01.cap`.
 
 ## What is the BSSID and ESSID of the wireless network?
 
