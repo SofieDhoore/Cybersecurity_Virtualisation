@@ -1,4 +1,4 @@
-# WPA easy
+# WPA medium
 
 WPA = WiFi Protected Access
 
