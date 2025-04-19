@@ -6,15 +6,15 @@ Shutdown the virtual machine and take a snapshot. Start the virtual machine and 
 
 ### Where is the base VDI stored? What size (in MB) is it?
 
-C:\Users\sofie\VirtualBox VMs\LinuxMint21
+`C:\Users\sofie\VirtualBox VMs\LinuxMint21`
 
-14,213.12 MB of 14 GB
+14,213.12 MB or 14 GB
 
 ### Where is the delta file stored? What size (in MB) is it?
 
-C:\Users\sofie\VirtualBox VMs\LinuxMint21\Snapshots
+`C:\Users\sofie\VirtualBox VMs\LinuxMint21\Snapshots`
 
-289.792 MB of 0.2897 GB
+289.792 MB or 0.2897 GB
 
 ## Restore the snapshot
 
