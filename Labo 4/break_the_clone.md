@@ -8,7 +8,7 @@ In my download folder, I've unpacked the zip-file. But I needed to to try a few 
 
 ![download](/images/download.png)
 
-I also needed to allow the thread in my Virus & Threat protection, there you can see the Trojan Horse I've downloaded.
+I also needed to allow the threat in my Virus & Threat protection, there you can see the Trojan Horse I've downloaded.
 
 ![Trojan](/images/trojan.png)
 
