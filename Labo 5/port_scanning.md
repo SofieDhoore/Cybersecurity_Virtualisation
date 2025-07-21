@@ -61,6 +61,8 @@ Nmap done: 1 IP address (1 host up) scanned in 19.49 seconds
            Raw packets sent: 3012 (132.456KB) | Rcvd: 20 (820B)
 ```
 
+When I put the right command `nmap scanme.nmap.org`, it doesn't work. The one with `nmap scan.me.nmap.org` does work because there is a delay to find the right site. You can put an extra option to slow down the scan with `nmap -T1 scanme.nmap.org` for a less aggresive attack.
+
 `nmap` doesn't scan all the 65535 ports, it only scanned 995 ports. With the command `nmap -p 1-65535 scan.me.org` you can scan all the ports.
 
 ```console
@@ -130,7 +132,7 @@ Nmap done: 1 IP address (1 host up) scanned in 3.74 seconds
 ```
 
 To detect which operating system and services are running on these ports, use the command `nmap -A scanme.nmap.org`.
-In my case the scanning gave up, maybe because the `-A` is to aggresive, I've got this output:
+In my case the scanning gave up, maybe because the `-A` is too aggresive, I've got this output:
 
 ```console
 ┌──(osboxes㉿osboxes)-[~]
