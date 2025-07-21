@@ -5,22 +5,60 @@ Experimenting with `nmap`, we use the Kali Linux. Go to the terminal and use the
 The following came out of the terminal:
 
 ```console
-┌──(osboxes㉿osboxes)-[~]
-└─$ nmap scan.me.nmap.org                                                                             
-Starting Nmap 7.95 ( https://nmap.org ) at 2025-05-10 03:43 EDT
+(osboxes㉿osboxes)-[~]                                                                                                                                                                                                                  
+└─$ nmap -d scan.me.nmap.org
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-21 05:25 EDT
+PORTS: Using ports open on 0% or more average hosts (TCP:1000, UDP:0, SCTP:0)
+--------------- Timing report ---------------
+  hostgroups: min 1, max 100000
+  rtt-timeouts: init 1000, min 100, max 10000
+  max-scan-delay: TCP 1000, UDP 1000, SCTP 1000
+  parallelism: min 0, max 0
+  max-retries: 10, host-timeout: 0
+  min-rate: 0, max-rate: 0
+---------------------------------------------
+Initiating Ping Scan at 05:25
+Scanning scan.me.nmap.org (50.116.1.184) [4 ports]
+Packet capture filter (device eth1): dst host 10.0.2.15 and (icmp or icmp6 or ((tcp or udp or sctp) and (src host 50.116.1.184)))
+We got a TCP ping packet back from 50.116.1.184 port 80 (trynum = 0)
+Completed Ping Scan at 05:25, 0.01s elapsed (1 total hosts)
+Overall sending rates: 383.40 packets / s, 14569.16 bytes / s.
+mass_rdns: Using DNS server 192.168.1.1
+Initiating Parallel DNS resolution of 1 host. at 05:25
+mass_rdns: 0.17s 0/1 [#: 1, OK: 0, NX: 0, DR: 0, SF: 0, TR: 1]
+Completed Parallel DNS resolution of 1 host. at 05:25, 0.17s elapsed
+DNS resolution of 1 IPs took 0.17s. Mode: Async [#: 1, OK: 1, NX: 0, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating SYN Stealth Scan at 05:25
+Scanning scan.me.nmap.org (50.116.1.184) [1000 ports]
+Packet capture filter (device eth1): dst host 10.0.2.15 and (icmp or icmp6 or ((tcp or udp or sctp) and (src host 50.116.1.184)))
+Discovered open port 443/tcp on 50.116.1.184
+Discovered open port 443/tcp on 50.116.1.184
+Increased max_successful_tryno for 50.116.1.184 to 1 (packet drop)
+Discovered open port 80/tcp on 50.116.1.184
+Discovered open port 22/tcp on 50.116.1.184
+Discovered open port 80/tcp on 50.116.1.184
+Bogus rttdelta: 2803589 (srtt 84918) ... ignoring
+Bogus rttdelta: 2803655 (srtt 84852) ... ignoring
+Bogus rttdelta: 2867340 (srtt 84918) ... ignoring
+Bogus rttdelta: 2867406 (srtt 84852) ... ignoring
+Completed SYN Stealth Scan at 05:25, 19.01s elapsed (1000 total ports)
+Overall sending rates: 158.24 packets / s, 6960.05 bytes / s.
 Nmap scan report for scan.me.nmap.org (50.116.1.184)
-Host is up (0.020s latency).
+Host is up, received reset ttl 255 (0.022s latency).
 Other addresses for scan.me.nmap.org (not scanned): 2600:3c01:e000:3e6::6d4e:7061
 rDNS record for 50.116.1.184: ack.nmap.org
-Not shown: 995 filtered tcp ports (no-response)
-PORT      STATE  SERVICE
-22/tcp    open   ssh
-80/tcp    open   http
-113/tcp   closed ident
-443/tcp   open   https
-31337/tcp closed Elite
+Scanned at 2025-07-21 05:25:02 EDT for 19s
+Not shown: 996 filtered tcp ports (no-response)
+PORT    STATE  SERVICE REASON
+22/tcp  open   ssh     syn-ack ttl 255
+80/tcp  open   http    syn-ack ttl 255
+113/tcp closed ident   reset ttl 255
+443/tcp open   https   syn-ack ttl 255
+Final times for host: srtt: 22492 rttvar: 41243  to: 187464
 
-Nmap done: 1 IP address (1 host up) scanned in 16.68 seconds
+Read from /usr/share/nmap: nmap-protocols nmap-services.
+Nmap done: 1 IP address (1 host up) scanned in 19.49 seconds
+           Raw packets sent: 3012 (132.456KB) | Rcvd: 20 (820B)
 ```
 
 `nmap` doesn't scan all the 65535 ports, it only scanned 995 ports. With the command `nmap -p 1-65535 scan.me.org` you can scan all the ports.
