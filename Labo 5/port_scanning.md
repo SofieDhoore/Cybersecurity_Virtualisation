@@ -6,11 +6,11 @@ The following came out of the terminal:
 
 ```console
 ┌──(osboxes㉿osboxes)-[~]
-└─$ nmap scan.me.nmap.org                                                                             
+└─$ nmap scanme.nmap.org                                                                             
 Starting Nmap 7.95 ( https://nmap.org ) at 2025-05-10 03:43 EDT
-Nmap scan report for scan.me.nmap.org (50.116.1.184)
+Nmap scan report for scanme.nmap.org (50.116.1.184)
 Host is up (0.020s latency).
-Other addresses for scan.me.nmap.org (not scanned): 2600:3c01:e000:3e6::6d4e:7061
+Other addresses for scanme.nmap.org (not scanned): 2600:3c01:e000:3e6::6d4e:7061
 rDNS record for 50.116.1.184: ack.nmap.org
 Not shown: 995 filtered tcp ports (no-response)
 PORT      STATE  SERVICE
